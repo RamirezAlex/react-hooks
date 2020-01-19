@@ -5,6 +5,7 @@ const WithHooks = (props) => {
 
   const incrementCount = () => {
     setCounter(counter + 1)
+    props.setColor(counter % 4)
   }
 
   return (

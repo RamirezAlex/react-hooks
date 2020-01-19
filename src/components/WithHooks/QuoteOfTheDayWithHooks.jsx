@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import loader from './loader.gif'
 
-const QuoteOfTheDayWithHooks = () => {
+const QuoteOfTheDayWithHooks = ({ color }) => {
   const [quote, setQuote] = useState({})
-
   useEffect(() => {
     fetch('https://quote-garden.herokuapp.com/quotes/random')
     .then((response) => {
@@ -13,11 +12,21 @@ const QuoteOfTheDayWithHooks = () => {
         })
     })
   }, [])
+
+  const colors = [
+    '#98f4c2',
+    '#09f2a1',
+    '#ff45c6',
+    '#57c4fd'
+  ] 
   
   const { quoteText, quoteAuthor } = quote
-
+  const stylus = {
+    backgroundColor: colors[color],
+    minHeight: color * 100
+  }
   return (
-    <div>
+    <div style={ stylus }>
       { 
         quoteText ? 
           <div>
